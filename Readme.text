@@ -1,0 +1,29 @@
+--------------------------------
+- Author: Rio Jerico Widyatama -
+--------------------------------
+
+[--12 Maret 2016--]
+- value in with-shipment.php check again [ok]
+
+[--13 Maret 2016--]
+-Why item_qty in t4t_shipment is null? [ok]
+-sum string for total wins field? [ok]
+
+[--14 Maret 2016--]
+-analyze the process
+
+[--15 Maret 2016--]
+-check again blocking-process.php (input t4t_htc)
+-make new field "no order" before "no_shipment" [ok]
+-make button after check total trees
+
+[--16 Maret 2016--]
+-make type of trees just for available in Man. Unit
+-make cek before submit, if trees not available will display popup warning else create process
+-search disable for back
+-update item_qty shipment (delete it)
+
+[--17 Maret 2016--]
+-Menambahkan mu sesuai dengan alokasi pohon tanpa perlu looping, setiap pohon di submit dan jumlahnya dihitung sesuai dengan jumlah alokasi pohon
+-proses penyimpanannya membuat variable satu persatu
+-nanti dibuat nge pos ambil data dari urlnya (sisa pohon yg blm dialokasikan, dll)

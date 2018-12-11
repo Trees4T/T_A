@@ -1,0 +1,5 @@
+[31-Oct-2016 03:04:51 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/t4t/public_html/tree_allocation/koneksi/koneksi.php on line 2
+[31-Oct-2016 03:04:57 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/t4t/public_html/tree_allocation/koneksi/koneksi.php on line 2
+[24-Jan-2017 01:46:00 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/t4t/public_html/tree_allocation/koneksi/koneksi.php on line 2
+[24-Jan-2017 01:47:04 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/t4t/public_html/tree_allocation/koneksi/koneksi.php on line 2
+[24-Jan-2017 01:47:04 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/t4t/public_html/tree_allocation/koneksi/koneksi.php on line 2
