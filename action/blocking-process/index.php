@@ -85,7 +85,7 @@ for ($i=1; $i <= $tot_wins ; $i++) {
     $ns_win2;
 
     //no - win - no_order - pesen? - used? - unused? - vc? - bl - id_part - no shipment - time - log user - type
-    $query_wins=$conn->query("insert into t4t_wins (no,wins,no_order,pesen,used,unused,vc,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('','$win','$no_order','','','','','$bl','$id_partisipan[0]','$id_partisipan[0]$date$ns_win2','$time','$log','3','$win_owner','$buyer')");
+    $query_wins=$conn->query("insert into t4t_wins (wins,no_order,pesen,used,unused,vc,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('$win','$no_order','','','','','$bl','$id_partisipan[0]','$id_partisipan[0]$date$ns_win2','$time','$log','3','$win_owner','$buyer')");
 
 }
 
@@ -108,8 +108,8 @@ $no_ship_htc=$id_partisipan[0].''.$date.''.$jml_ns2;
 $wins=$start_w-1;
    $win=$wins+$i;
 
-    $query_shipment=$conn->query("insert into t4t_shipment (no,no_shipment,id_comp,bl,bl_tgl,wins_used,wins_unused,wkt_shipment,foto,acc,no_order,kota_tujuan,fee,diskon,tgl_paid,acc_paid,note,buyer,item_qty,relation)
-    values ('','$no_ship_htc','$id_partisipan[0]','$bl','$time','$win','','$time_second','','1','$no_order','$destination','$fee','0','$time','1','$note','$repeat_id[0]','1','$win_owner')");
+    $query_shipment=$conn->query("insert into t4t_shipment (no_shipment,id_comp,bl,bl_tgl,wins_used,wins_unused,wkt_shipment,foto,acc,no_order,kota_tujuan,fee,diskon,tgl_paid,acc_paid,note,buyer,item_qty,relation)
+    values ('$no_ship_htc','$id_partisipan[0]','$bl','$time','$win','','$time_second','','1','$no_order','$destination','$fee','0','$time','1','$note','$repeat_id[0]','1','$win_owner')");
 
 }
 
@@ -171,7 +171,7 @@ while ( $data=$data_lahan->fetch()) {
 
 
     //no - bl - tujuan - kd lahan - no lahan - geo - silvilkultur - luas - petani - desa - ta - mu - jml phn - geo 2 - no shipment - time
-    $query_htc=$conn->query("insert into t4t_htc values ('','$bl','$destination','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$mu2[0]','$jml_pohon2[$i]','','$no_ship_htc','$time')");
+    $query_htc=$conn->query("insert into t4t_htc values ($bl','$destination','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$mu2[0]','$jml_pohon2[$i]','','$no_ship_htc','$time')");
 
     $query_current_tree_update2=$conn->query("update current_tree set bl='$bl' where bl='1111-11-11' and no_shipment='$no_ship_htc'");
 
