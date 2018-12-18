@@ -85,7 +85,7 @@ for ($i=1; $i <= $tot_wins ; $i++) {
     $ns_win2;
 
     //no - win - no_order - pesen? - used? - unused? - vc? - bl - id_part - no shipment - time - log user - type
-    $query_wins=$conn->query("insert into t4t_wins (wins,no_order,pesen,used,unused,vc,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('$win','$no_order','','','','','$bl','$id_partisipan[0]','$id_partisipan[0]$date$ns_win2','$time','$log','3','$win_owner','$buyer')");
+    $query_wins=$conn->query("insert into t4t_wins (wins,no_order,vc,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('$win','$no_order','','$bl','$id_partisipan[0]','$id_partisipan[0]$date$ns_win2','$time','$log','3','$win_owner','$buyer')");
 
 }
 
@@ -171,7 +171,7 @@ while ( $data=$data_lahan->fetch()) {
 
 
     //no - bl - tujuan - kd lahan - no lahan - geo - silvilkultur - luas - petani - desa - ta - mu - jml phn - geo 2 - no shipment - time
-    $query_htc=$conn->query("insert into t4t_htc values ($bl','$destination','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$mu2[0]','$jml_pohon2[$i]','','$no_ship_htc','$time')");
+    $query_htc=$conn->query("insert into t4t_htc values ('$bl','$destination','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$mu2[0]','$jml_pohon2[$i]','','$no_ship_htc','$time')");
 
     $query_current_tree_update2=$conn->query("update current_tree set bl='$bl' where bl='1111-11-11' and no_shipment='$no_ship_htc'");
 
