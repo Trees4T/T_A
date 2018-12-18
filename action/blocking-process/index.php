@@ -171,7 +171,7 @@ while ( $data=$data_lahan->fetch()) {
 
 
     //no - bl - tujuan - kd lahan - no lahan - geo - silvilkultur - luas - petani - desa - ta - mu - jml phn - geo 2 - no shipment - time
-    $query_htc=$conn->query("insert into t4t_htc values ('$bl','$destination','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$mu2[0]','$jml_pohon2[$i]','','$no_ship_htc','$time')");
+    $query_htc=$conn->query("insert into (bl,tujuan,kd_lahan,no_lahan,geo,silvilkultur,luas,petani,desa,ta,mu,jml_phn,no_shipment,time) t4t_htc values ('$bl','$destination','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$mu2[0]','$jml_pohon2[$i]','$no_ship_htc','$time')");
 
     $query_current_tree_update2=$conn->query("update current_tree set bl='$bl' where bl='1111-11-11' and no_shipment='$no_ship_htc'");
 
