@@ -81,7 +81,7 @@ for ($i=1; $i <= $tot_wins ; $i++) {
     $ns_win2;
     //no - win - no_order - pesen? - used? - unused? - vc? - bl - id_part - no shipment - time - log user - type
 
-    $query_wins=$conn->query("insert into t4t_wins (wins,no_order,pesen,used,unused,vc,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('$win','$no_order','','','','','$bl','$id_partisipan[0]','$id_partisipan[0]$date$ns_win2','$time','$log','4','$win_owner','$buyer')");
+    $query_wins=$conn->query("insert into t4t_wins (wins,no_order,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('$win','$no_order','$bl','$id_partisipan[0]','$id_partisipan[0]$date$ns_win2','$time','$log','4','$win_owner','$buyer')");
 }
 
 $repeat_id = $conn->query("SELECT repeat_id FROM t4t_idrelation
