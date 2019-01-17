@@ -236,6 +236,32 @@
                             </div>
                                 <!-- //WIN Owner -->
 
+                                <!-- tree Owner -->
+                              <div class="form-group">
+                              <?php
+                                $tree_owner = $_REQUEST['tree_owner'];
+                              ?>
+                                  <label class="col-sm-2 control-label">Tree Owner</label>
+                                  <?php
+                                  if ($tree_owner==1) {
+                                    $check_true  = "checked";
+                                  }else{
+                                    $check_false = "checked";
+                                  }
+                                  ?>
+                                  <div class="col-sm-10">
+                                    <div class="radios">
+                                            <label class="label_radio r_on" for="radio-01">
+                                                <input name="tree_owner" id="radio-01" value="0" type="radio" <?php echo $check_false ?> onchange="this.form.submit()"> False
+                                            </label>
+                                            <label class="label_radio r_off" for="radio-02">
+                                                <input name="tree_owner" id="radio-02" value="1" type="radio" <?php echo $check_true ?> onchange="this.form.submit()"> True (already owned)
+                                            </label>
+                                        </div>
+                                  </div>
+                              </div>
+                                  <!-- //tree Owner -->
+
                             <!-- START WINS -->
                         <div class="form-group">
                         <?php $ava_allo=$_REQUEST['ava_allo']; ?>
@@ -283,8 +309,15 @@
                        // echo $id_mu['kd_mu'];
 
                         //echo $land;
-                        $jumlah_pohon=$conn->query("select count(*) from current_tree where kd_mu='$id_mu[0]' and used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1")->fetch();
-                        //echo $jumlah_pohon[0];
+                        if ($tree_owner==1) {
+
+                          $jumlah_pohon=$conn->query("select count(*) from current_tree where kd_mu='$id_mu[0]' and used=0 and bl='' and no_shipment='  $id_comp[0]' and koordinat!='' and used=0 and hidup=1")->fetch();
+
+                        }else{
+                          $jumlah_pohon=$conn->query("select count(*) from current_tree where kd_mu='$id_mu[0]' and used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1")->fetch();
+                          //echo $jumlah_pohon[0];
+                        }
+
                         ?>
 
 
@@ -306,7 +339,12 @@
                           //echo $petani;
                           //echo $idmu2[0];
                           $i=1;
-                          $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu ");
+                          if ($tree_owner==1) {
+                            $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='$id_comp[0]' and koordinat!='' and used=0 and hidup=1 group by kd_mu ");
+                          }else{
+                            $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu ");
+                          }
+
 
                           while ( $load=$data->fetch()) {
 
@@ -565,15 +603,22 @@
                         <input type="hidden" name="log" value="<?php echo $_SESSION['ids']?>">
                         <input type="hidden" name="buyer" value="<?php echo $buyer ?>">
                         <input type="hidden" name="win_owner" value="<?php echo $win_owner ?>">
+                        <input type="hidden" name="tree_owner" value="<?php echo $tree_owner ?>">
                         <?php
 
                           $i=1;
-                          $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu  ");
+                          if ($tree_owner==1) {
+                            $data=$conn->query("select count(*) as jml_pohon,kd_mu from current_tree where used=0 and bl='' and no_shipment='$id_comp[0]' and koordinat!='' and used=0 and hidup=1 group by kd_mu  ");
+                          }else{
+                            $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu  ");
+                          }
+
+
 
                           while ( $load=$data->fetch()) {
 
                            ?>
-                             <input type="hidden" class="form-control o" name="kdman_unit<?php echo $i?>" value="<?php echo $load['kd_mu'] ?>">
+                            <input type="hidden" class="form-control o" name="kdman_unit<?php echo $i?>" value="<?php echo $load['kd_mu'] ?>">
                             <input type="hidden" class="form-control o" name="alokasi_pohon<?php echo $i?>" value="<?php echo $_REQUEST['alokasi_pohon'.$i] ?>">
 
                             <?php

@@ -31,6 +31,7 @@ $log        =$_POST['log'];
 $buyer      =$_POST['buyer'];
 $win_owner  =$_POST['win_owner'];
 $jml_ns     =$_POST['jml_ns'];
+$tree_owner  =$_POST['tree_owner'];
 
 $id_partisipan=$conn->query("SELECT id from t4t_participant where name='$id_part'")->fetch();
 
@@ -45,8 +46,12 @@ $date=date("dmy");
 
 
 //update current tree
+if ($tree_owner==1) {
+  $select_current_tree=$conn->query("select count(*) as jml_pohon,kd_mu from current_tree where used=0 and bl='' and no_shipment='$id_partisipan[0]' and koordinat!='' and used=0 and hidup=1 group by kd_mu");
+}else{
+  $select_current_tree=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu");
+}
 
-$select_current_tree=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu");
 
 $z=1;
 
@@ -62,7 +67,12 @@ while ( $load=$select_current_tree->fetch()) {
    $date=date("dmy");
    $ns2=$ns[0]+$i;
 
+   if ($tree_owner==1) {
+     $query_current_tree_update=$conn->query("UPDATE current_tree set used='1',bl='1111-11-11',no_shipment='$id_partisipan[0]$date$ns2' where used='0' and hidup='1' and kd_mu='$kdman_unit' and koordinat!='' and no_shipment='$id_partisipan[0]' limit $treeperwins");
+   }else{
      $query_current_tree_update=$conn->query("update current_tree set used='1',bl='1111-11-11',no_shipment='$id_partisipan[0]$date$ns2' where used='0' and hidup='1' and kd_mu='$kdman_unit' and koordinat!='' limit $treeperwins");
+   }
+
 
    }
 
@@ -118,7 +128,11 @@ $wins=$start_w-1;
 
 
 //insert into t4t_htc
-$select_htc=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu");
+if ($tree_owner==1) {
+  $select_htc=$conn->query("SELECT COUNT(*) AS jml_pohon,kd_mu FROM current_tree WHERE used=1 AND bl='1111-11-11' AND koordinat!='' AND hidup=1 GROUP BY kd_mu");
+}else{
+  $select_htc=$conn->query("SELECT count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu");
+}
 
 
 $htc=1;
