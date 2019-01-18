@@ -340,7 +340,7 @@
                           //echo $idmu2[0];
                           $i=1;
                           if ($tree_owner==1) {
-                            $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='$id_comp[0]' and koordinat!='' and used=0 and hidup=1 group by kd_mu ");
+                            $data=$conn->query("select count(*) as jml_pohon,kd_mu from current_tree where used=0 and bl='' and no_shipment='$id_comp[0]' and koordinat!='' and used=0 and hidup=1 group by kd_mu ");
                           }else{
                             $data=$conn->query("select count(*) as jml_pohon,kd_mu from add_jmlpohon_lahan where used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1 group by kd_mu ");
                           }
