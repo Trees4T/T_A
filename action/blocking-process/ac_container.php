@@ -97,7 +97,7 @@ while ( $a < $ex_win2) {
 
         for ($i=$start; $i <= $end ; $i++) {
             //no - win - no_order - pesen? - used? - unused? - vc? - bl - id_part - no shipment - time - log user - type
-            $query_wins=$conn->query("insert into t4t_wins (no,wins,no_order,pesen,used,unused,vc,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('','$hasil','$no_order','','','','','$bl','$id_partisipan[0]','$no_ship','$date','$log','1','$relation','$relation_part')");
+            $query_wins=$conn->query("insert into t4t_wins (wins,no_order,bl,id_part,no_shipment,time,log_user,trans_type,relation,id_retailer) values ('$hasil','$no_order','$bl','$id_partisipan[0]','$no_ship','$date','$log','1','$relation','$relation_part')");
 
             // jika nomor wins banyak tanpa tanda "-"
             if (!$isi[1]) {
@@ -150,7 +150,7 @@ while ( $data=$data_lahan->fetch()) {
 
 
     //no - bl - tujuan - kd lahan - no lahan - geo - silvilkultur - luas - petani - desa - ta - mu - jml phn - geo 2 - no shipment - time
-   $query_htc=$conn->query("insert into t4t_htc (no,bl,tujuan,kd_lahan,no_lahan,geo,silvilkultur,luas,petani,desa,ta,mu,jml_phn,geo2,no_shipment,time) values ('','$bl','$tujuan[0]','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$kdman_unit[0]','$jml_pohon2[$i]','','$no_ship','$date')");
+   $query_htc=$conn->query("insert into t4t_htc (bl,tujuan,kd_lahan,no_lahan,geo,silvilkultur,luas,petani,desa,ta,mu,jml_phn,geo2,no_shipment,time) values ('$bl','$tujuan[0]','$kd_lahan2','$no_lahan2','$geo2','$silvilkultur2[0]','$luas2','$petani2[0]','$desa2[0]','$ta2[0]','$kdman_unit[0]','$jml_pohon2[$i]','','$no_ship','$date')");
 
 $i++;
 }
