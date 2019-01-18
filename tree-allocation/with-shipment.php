@@ -311,7 +311,7 @@
                         //echo $land;
                         if ($tree_owner==1) {
 
-                          $jumlah_pohon=$conn->query("select count(*) from current_tree where kd_mu='$id_mu[0]' and used=0 and bl='' and no_shipment='  $id_comp[0]' and koordinat!='' and used=0 and hidup=1")->fetch();
+                          $jumlah_pohon=$conn->query("select count(*) from current_tree where kd_mu='$id_mu[0]' and used=0 and bl='' and no_shipment='$id_comp[0]' and koordinat!='' and used=0 and hidup=1")->fetch();
 
                         }else{
                           $jumlah_pohon=$conn->query("select count(*) from current_tree where kd_mu='$id_mu[0]' and used=0 and bl='' and no_shipment='' and koordinat!='' and used=0 and hidup=1")->fetch();
@@ -603,7 +603,7 @@
                         <input type="hidden" name="log" value="<?php echo $_SESSION['ids']?>">
                         <input type="hidden" name="buyer" value="<?php echo $buyer ?>">
                         <input type="hidden" name="win_owner" value="<?php echo $win_owner ?>">
-                        
+
                         <input type="hidden" name="tree_owner" value="<?php echo $tree_owner ?>">
                         <?php
 
