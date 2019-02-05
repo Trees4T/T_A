@@ -167,7 +167,7 @@
 
                                 <label class="col-sm-2 control-label">Fee</label>
                                 <div class="col-sm-3">
-                                    <input type="number" class="form-control" name="fee" value="<?php echo $fee;?>" placeholder="Fee">
+                                    <input type="number" class="form-control" name="fee" value="<?php echo $fee;?>" placeholder="Fee" min="0" step="any">
                                 </div>
                             </div>
                             <!-- close fee -->

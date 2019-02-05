@@ -3,7 +3,7 @@
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' )) {
 
     require 'ssp.class.php';
-
+    require '../../../koneksi/koneksi.php';
     // nama table
     $table = 't4t_htc';
 
@@ -32,10 +32,11 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ( $_SERVER['HTTP_X_REQUESTED_WIT
 
     // SQL server connection information
     $sql_details = array(
-        'user' => 't4t_t4t',
-        'pass' => 'DeviNasir2013',
-        'db' => 't4t_t4t',
-        'host' => 'localhost'
+        'user' => $user,
+        'pass' => $pass,
+        'db' => $database,
+        'host' => $host,
+        'port' => $port
     );
 
     //     $sql_details = array(
