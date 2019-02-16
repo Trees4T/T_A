@@ -1,13 +1,14 @@
 <?php
 ######## LOCAL ########
-$host 		= 'localhost';
-$user			= 'root';
+$host 		= '';
+$user			= '';
 $pass 		= '';
 $database = '';
+$port 		= '';
 
 
 try{
-	$conn = new PDO ("mysql:host=$host;dbname=$database", $user, $pass);
+	$conn = new PDO ("mysql:host=$host;port=$port;dbname=$database", $user, $pass);
 
 		//echo "Connected!";
 	}catch(PDOException $e){
